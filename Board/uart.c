@@ -2,16 +2,10 @@
 #define _UART_C_
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "stdio.h"	
-#include "string.h"	
+#include <stdio.h>	
+#include <string.h>	
 
-#include "sys.h" 
-#include "HAL_device.h"
-
-#include "main.h"
-#include "sys.h"
-#include "i2c.h"
-#include "uart.h"	  
+#include "EVBoard.h"	  
 
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -3,21 +3,16 @@
 //////////////////////////////////////////////////////////////////////////////////	 
 
 #include <stdio.h>
-#include "sys.h"
-#include "HAL_device.h"
 
-#include "spi.h"
-#include "uart.h"	  
-
-
+#include "EVBoard.h"  
 
 
 extern void DataCompare(u8 *p1, u8 *p2,u16 count);
 /********************************************************************************************************
-**º¯ÊıĞÅÏ¢ £ºSPIM_CSLow(SPI_TypeDef* SPIx)                      
-**¹¦ÄÜÃèÊö :ÎªÑ¡¶¨µÄSPI Èí¼şÖØÖÃÄÚ²¿NSS ¹Ü½Å 
-**ÊäÈë²ÎÊı £ºSPI_TypeDef* SPIx,¿ÉÑ¡ÔñSPI1,SPI2
-**Êä³ö²ÎÊı £ºÎŞ
+**å‡½æ•°ä¿¡æ¯ ï¼šSPIM_CSLow(SPI_TypeDef* SPIx)                      
+**åŠŸèƒ½æè¿° :ä¸ºé€‰å®šçš„SPI è½¯ä»¶é‡ç½®å†…éƒ¨NSS ç®¡è„š 
+**è¾“å…¥å‚æ•° ï¼šSPI_TypeDef* SPIx,å¯é€‰æ‹©SPI1,SPI2
+**è¾“å‡ºå‚æ•° ï¼šæ— 
 ********************************************************************************************************/
 void SPIM_CSLow(SPI_TypeDef* SPIx)
 {
@@ -31,10 +26,10 @@ void SPIM_CSLow(SPI_TypeDef* SPIx)
 }
 
 /********************************************************************************************************
-**º¯ÊıĞÅÏ¢ £ºSPIM_CSHigh(SPI_TypeDef* SPIx)                      
-**¹¦ÄÜÃèÊö :ÎªÑ¡¶¨µÄSPI Èí¼şÅäÖÃÄÚ²¿NSS ¹Ü½Å 
-**ÊäÈë²ÎÊı £ºSPI_TypeDef* SPIx,¿ÉÑ¡ÔñSPI1,SPI2
-**Êä³ö²ÎÊı £ºÎŞ
+**å‡½æ•°ä¿¡æ¯ ï¼šSPIM_CSHigh(SPI_TypeDef* SPIx)                      
+**åŠŸèƒ½æè¿° :ä¸ºé€‰å®šçš„SPI è½¯ä»¶é…ç½®å†…éƒ¨NSS ç®¡è„š 
+**è¾“å…¥å‚æ•° ï¼šSPI_TypeDef* SPIx,å¯é€‰æ‹©SPI1,SPI2
+**è¾“å‡ºå‚æ•° ï¼šæ— 
 ********************************************************************************************************/
 void SPIM_CSHigh(SPI_TypeDef* SPIx)
 {
@@ -48,10 +43,10 @@ void SPIM_CSHigh(SPI_TypeDef* SPIx)
 }
 
 /********************************************************************************************************
-**º¯ÊıĞÅÏ¢ £ºSPIM_TXEn(SPI_TypeDef* SPIx)                     
-**¹¦ÄÜÃèÊö :¹Ø±Õ SPI ÔÚË«ÏòÄ£Ê½ÏÂµÄÊı¾İ´«Êä·½Ïò 
-**ÊäÈë²ÎÊı £ºSPI_TypeDef* SPIx,¿ÉÑ¡ÔñSPI1,SPI2
-**Êä³ö²ÎÊı £ºÎŞ
+**å‡½æ•°ä¿¡æ¯ ï¼šSPIM_TXEn(SPI_TypeDef* SPIx)                     
+**åŠŸèƒ½æè¿° :å…³é—­ SPI åœ¨åŒå‘æ¨¡å¼ä¸‹çš„æ•°æ®ä¼ è¾“æ–¹å‘ 
+**è¾“å…¥å‚æ•° ï¼šSPI_TypeDef* SPIx,å¯é€‰æ‹©SPI1,SPI2
+**è¾“å‡ºå‚æ•° ï¼šæ— 
 ********************************************************************************************************/
 void SPIM_TXEn(SPI_TypeDef* SPIx)
 {
@@ -60,10 +55,10 @@ void SPIM_TXEn(SPI_TypeDef* SPIx)
 }
 
 /********************************************************************************************************
-**º¯ÊıĞÅÏ¢ £ºSPIM_TXDisable(SPI_TypeDef* SPIx)                     
-**¹¦ÄÜÃèÊö :¹Ø±Õ SPI ÔÚË«ÏòÄ£Ê½ÏÂµÄÊı¾İ´«Êä·½Ïò 
-**ÊäÈë²ÎÊı £ºSPI_TypeDef* SPIx,¿ÉÑ¡ÔñSPI1,SPI2
-**Êä³ö²ÎÊı £ºÎŞ
+**å‡½æ•°ä¿¡æ¯ ï¼šSPIM_TXDisable(SPI_TypeDef* SPIx)                     
+**åŠŸèƒ½æè¿° :å…³é—­ SPI åœ¨åŒå‘æ¨¡å¼ä¸‹çš„æ•°æ®ä¼ è¾“æ–¹å‘ 
+**è¾“å…¥å‚æ•° ï¼šSPI_TypeDef* SPIx,å¯é€‰æ‹©SPI1,SPI2
+**è¾“å‡ºå‚æ•° ï¼šæ— 
 ********************************************************************************************************/
 void SPIM_TXDisable(SPI_TypeDef* SPIx)
 {
@@ -72,10 +67,10 @@ void SPIM_TXDisable(SPI_TypeDef* SPIx)
 }
 
 /********************************************************************************************************
-**º¯ÊıĞÅÏ¢ £ºSPIM_RXEn(SPI_TypeDef* SPIx)                     
-**¹¦ÄÜÃèÊö :¹Ø±Õ SPI ÔÚË«ÏòÄ£Ê½ÏÂµÄÊı¾İ´«Êä·½Ïò 
-**ÊäÈë²ÎÊı £ºSPI_TypeDef* SPIx,¿ÉÑ¡ÔñSPI1,SPI2
-**Êä³ö²ÎÊı £ºÎŞ
+**å‡½æ•°ä¿¡æ¯ ï¼šSPIM_RXEn(SPI_TypeDef* SPIx)                     
+**åŠŸèƒ½æè¿° :å…³é—­ SPI åœ¨åŒå‘æ¨¡å¼ä¸‹çš„æ•°æ®ä¼ è¾“æ–¹å‘ 
+**è¾“å…¥å‚æ•° ï¼šSPI_TypeDef* SPIx,å¯é€‰æ‹©SPI1,SPI2
+**è¾“å‡ºå‚æ•° ï¼šæ— 
 ********************************************************************************************************/
 void SPIM_RXEn(SPI_TypeDef* SPIx)
 {
@@ -84,10 +79,10 @@ void SPIM_RXEn(SPI_TypeDef* SPIx)
 }
 
 /********************************************************************************************************
-**º¯ÊıĞÅÏ¢ £ºSPIM_RXDisable(SPI_TypeDef* SPIx)                     
-**¹¦ÄÜÃèÊö :¹Ø±Õ SPI ÔÚË«ÏòÄ£Ê½ÏÂµÄÊı¾İ´«Êä·½Ïò 
-**ÊäÈë²ÎÊı £ºSPI_TypeDef* SPIx,¿ÉÑ¡ÔñSPI1,SPI2
-**Êä³ö²ÎÊı £ºÎŞ
+**å‡½æ•°ä¿¡æ¯ ï¼šSPIM_RXDisable(SPI_TypeDef* SPIx)                     
+**åŠŸèƒ½æè¿° :å…³é—­ SPI åœ¨åŒå‘æ¨¡å¼ä¸‹çš„æ•°æ®ä¼ è¾“æ–¹å‘ 
+**è¾“å…¥å‚æ•° ï¼šSPI_TypeDef* SPIx,å¯é€‰æ‹©SPI1,SPI2
+**è¾“å‡ºå‚æ•° ï¼šæ— 
 ********************************************************************************************************/
 void SPIM_RXDisable(SPI_TypeDef* SPIx)
 {
@@ -97,10 +92,10 @@ void SPIM_RXDisable(SPI_TypeDef* SPIx)
 
 
 /********************************************************************************************************
-**º¯ÊıĞÅÏ¢ £ºSPIMReadWriteByte(SPI_TypeDef* SPIx,u8 tx_data)                    
-**¹¦ÄÜÃèÊö : Í¨¹ıÍâÉè SPIx ÊÕ·¢Êı¾İ ,ÓÃÓÚÈ«Ë«¹¤Ä£Ê½(Í¬Ê±ÊÕ·¢)
-**ÊäÈë²ÎÊı £ºSPI_TypeDef* SPIx,¿ÉÑ¡ÔñSPI1,SPI2  ;  tx_data
-**Êä³ö²ÎÊı £ºÎŞ
+**å‡½æ•°ä¿¡æ¯ ï¼šSPIMReadWriteByte(SPI_TypeDef* SPIx,u8 tx_data)                    
+**åŠŸèƒ½æè¿° : é€šè¿‡å¤–è®¾ SPIx æ”¶å‘æ•°æ® ,ç”¨äºå…¨åŒå·¥æ¨¡å¼(åŒæ—¶æ”¶å‘)
+**è¾“å…¥å‚æ•° ï¼šSPI_TypeDef* SPIx,å¯é€‰æ‹©SPI1,SPI2  ;  tx_data
+**è¾“å‡ºå‚æ•° ï¼šæ— 
 ********************************************************************************************************/
 u16 SPIMReadWriteByte(SPI_TypeDef* SPIx,u8 tx_data)
 {
@@ -116,40 +111,39 @@ u16 SPIMReadWriteByte(SPI_TypeDef* SPIx,u8 tx_data)
 
 
 
-
 /********************************************************************************************************
-**º¯ÊıĞÅÏ¢ £ºSPIM_Init(SPI_TypeDef* SPIx, unsigned short spi_baud_div)            
-**¹¦ÄÜÃèÊö :¿ÉĞŞ¸Ä²ÎÊı³õÊ¼»¯SPI
-**ÊäÈë²ÎÊı £ºSPI_TypeDef* SPIx,¿ÉÑ¡ÔñSPI1,SPI2  ;spi_baud_div
-**Êä³ö²ÎÊı £ºÎŞ
+**å‡½æ•°ä¿¡æ¯ ï¼šSPIM_Init(SPI_TypeDef* SPIx, unsigned short spi_baud_div)            
+**åŠŸèƒ½æè¿° :å¯ä¿®æ”¹å‚æ•°åˆå§‹åŒ–SPI
+**è¾“å…¥å‚æ•° ï¼šSPI_TypeDef* SPIx,å¯é€‰æ‹©SPI1,SPI2  ;spi_baud_div
+**è¾“å‡ºå‚æ•° ï¼šæ— 
 ********************************************************************************************************/
 void SPIM_Init(SPI_TypeDef* SPIx,unsigned short spi_baud_div)
 {
 	SPI_InitTypeDef SPI_InitStructure;
 	
 	SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
-	SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;				// DMAÊı¾İ¿í¶È
+	SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;				// DMAæ•°æ®å®½åº¦
 	SPI_InitStructure.SPI_DataWidth = SPI_DataWidth_8b;
 	SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;    					// mode0 SPI_CPOL_Low, SPI_CPHA_1Edge;
 	SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;  					// mode3 SPI_CPOL_High,SPI_CPHA_2Edge
 	SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
-	SPI_InitStructure.SPI_BaudRatePrescaler = spi_baud_div;			// SPI×î¸ß40MHz£¬72M×î¶à2·ÖÆµ
+	SPI_InitStructure.SPI_BaudRatePrescaler = spi_baud_div;			// SPIæœ€é«˜40MHzï¼Œ72Mæœ€å¤š2åˆ†é¢‘
 	SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;
 #ifdef MM32F103xA	
 	SPI_InitStructure.SPI_length = 8;
 #endif	
 	SPI_Init(SPIx, &SPI_InitStructure);
 	
-	SPI_Cmd(SPIx, ENABLE); 											// Enables the specified SPI peripheral SPIÊ¹ÄÜ¡¢Ö÷»úÄ£Ê½ 8Î»Êı¾İÄ£Ê½ SPI µÄ²¨ÌØÂÊ
+	SPI_Cmd(SPIx, ENABLE); 											// Enables the specified SPI peripheral SPIä½¿èƒ½ã€ä¸»æœºæ¨¡å¼ 8ä½æ•°æ®æ¨¡å¼ SPI çš„æ³¢ç‰¹ç‡
 	SPIM_TXEn(SPIx);
 	SPIM_RXEn(SPIx);	
 }
 
 /********************************************************************************************************
-**º¯ÊıĞÅÏ¢ £ºSPIM_ReadID(SPI_TypeDef* SPIx)                   
-**¹¦ÄÜÃèÊö :¶ÁÈ¡ID 
-**ÊäÈë²ÎÊı £ºSPI_TypeDef* SPIx,¿ÉÑ¡ÔñSPI1,SPI2
-**Êä³ö²ÎÊı £ºÎŞ
+**å‡½æ•°ä¿¡æ¯ ï¼šSPIM_ReadID(SPI_TypeDef* SPIx)                   
+**åŠŸèƒ½æè¿° :è¯»å–ID 
+**è¾“å…¥å‚æ•° ï¼šSPI_TypeDef* SPIx,å¯é€‰æ‹©SPI1,SPI2
+**è¾“å‡ºå‚æ•° ï¼šæ— 
 ********************************************************************************************************/
 void SPIM_ReadID(SPI_TypeDef* SPIx, u8* id)
 {
@@ -167,10 +161,10 @@ void SPIM_ReadID(SPI_TypeDef* SPIx, u8* id)
 }
 
 /********************************************************************************************************
-**º¯ÊıĞÅÏ¢ £ºSPIM_WriteEnable(SPI_TypeDef* SPIx)                  
-**¹¦ÄÜÃèÊö :Ğ´Êı¾İÊ¹ÄÜ
-**ÊäÈë²ÎÊı £ºSPI_TypeDef* SPIx,¿ÉÑ¡ÔñSPI1,SPI2
-**Êä³ö²ÎÊı £ºÎŞ
+**å‡½æ•°ä¿¡æ¯ ï¼šSPIM_WriteEnable(SPI_TypeDef* SPIx)                  
+**åŠŸèƒ½æè¿° :å†™æ•°æ®ä½¿èƒ½
+**è¾“å…¥å‚æ•° ï¼šSPI_TypeDef* SPIx,å¯é€‰æ‹©SPI1,SPI2
+**è¾“å‡ºå‚æ•° ï¼šæ— 
 ********************************************************************************************************/
 void SPIM_WriteEnable(SPI_TypeDef* SPIx)
 {
@@ -180,10 +174,10 @@ void SPIM_WriteEnable(SPI_TypeDef* SPIx)
 }
 
 /********************************************************************************************************
-**º¯ÊıĞÅÏ¢ £ºSSPIM_checkStatus(SPI_TypeDef* SPIx)                 
-**¹¦ÄÜÃèÊö :¼ì²éÊı¾İ·¢ËÍÊÇ·ñÕıÈ·
-**ÊäÈë²ÎÊı £ºSPI_TypeDef* SPIx,¿ÉÑ¡ÔñSPI1,SPI2
-**Êä³ö²ÎÊı £ºÎŞ
+**å‡½æ•°ä¿¡æ¯ ï¼šSSPIM_checkStatus(SPI_TypeDef* SPIx)                 
+**åŠŸèƒ½æè¿° :æ£€æŸ¥æ•°æ®å‘é€æ˜¯å¦æ­£ç¡®
+**è¾“å…¥å‚æ•° ï¼šSPI_TypeDef* SPIx,å¯é€‰æ‹©SPI1,SPI2
+**è¾“å‡ºå‚æ•° ï¼šæ— 
 ********************************************************************************************************/
 void SPIM_checkStatus(SPI_TypeDef* SPIx)
 {
@@ -199,10 +193,10 @@ void SPIM_checkStatus(SPI_TypeDef* SPIx)
 }
 
 /********************************************************************************************************
-**º¯ÊıĞÅÏ¢ £ºSPIM_WriteEnable(SPI_TypeDef* SPIx)                  
-**¹¦ÄÜÃèÊö :Ğ´Êı¾İÊ§ÄÜ
-**ÊäÈë²ÎÊı £ºSPI_TypeDef* SPIx,¿ÉÑ¡ÔñSPI1,SPI2
-**Êä³ö²ÎÊı £ºÎŞ
+**å‡½æ•°ä¿¡æ¯ ï¼šSPIM_WriteEnable(SPI_TypeDef* SPIx)                  
+**åŠŸèƒ½æè¿° :å†™æ•°æ®å¤±èƒ½
+**è¾“å…¥å‚æ•° ï¼šSPI_TypeDef* SPIx,å¯é€‰æ‹©SPI1,SPI2
+**è¾“å‡ºå‚æ•° ï¼šæ— 
 ********************************************************************************************************/
 void SPIM_WriteDisable(SPI_TypeDef* SPIx)
 {	
@@ -212,10 +206,10 @@ void SPIM_WriteDisable(SPI_TypeDef* SPIx)
 }
 
 /********************************************************************************************************
-**º¯ÊıĞÅÏ¢ £ºSPIM_PageRead(SPI_TypeDef* SPIx,u32 address,u8 *p,u16 number)               
-**¹¦ÄÜÃèÊö :¶ÁÈ¡256Ò³Êı¾İ
-**ÊäÈë²ÎÊı £ºSPI_TypeDef* SPIx,¿ÉÑ¡ÔñSPI1,SPI2  ;  address  ;*p ;number
-**Êä³ö²ÎÊı £ºÎŞ
+**å‡½æ•°ä¿¡æ¯ ï¼šSPIM_PageRead(SPI_TypeDef* SPIx,u32 address,u8 *p,u16 number)               
+**åŠŸèƒ½æè¿° :è¯»å–256é¡µæ•°æ®
+**è¾“å…¥å‚æ•° ï¼šSPI_TypeDef* SPIx,å¯é€‰æ‹©SPI1,SPI2  ;  address  ;*p ;number
+**è¾“å‡ºå‚æ•° ï¼šæ— 
 ********************************************************************************************************/
 void SPIM_PageRead(SPI_TypeDef* SPIx,u32 address,u8 *p,u16 number)  //page = 256 bytes
 {
@@ -241,10 +235,10 @@ void SPIM_PageRead(SPI_TypeDef* SPIx,u32 address,u8 *p,u16 number)  //page = 256
 }
 
 /********************************************************************************************************
-**º¯ÊıĞÅÏ¢ £ºSPIM_PageProgram(SPI_TypeDef* SPIx,u32 address,u8 *p,u16 number)              
-**¹¦ÄÜÃèÊö :·¢ËÍ256Ò³Êı¾İ
-**ÊäÈë²ÎÊı £ºSPI_TypeDef* SPIx,¿ÉÑ¡ÔñSPI1,SPI2  ;  address;*p;number
-**Êä³ö²ÎÊı £ºÎŞ
+**å‡½æ•°ä¿¡æ¯ ï¼šSPIM_PageProgram(SPI_TypeDef* SPIx,u32 address,u8 *p,u16 number)              
+**åŠŸèƒ½æè¿° :å‘é€256é¡µæ•°æ®
+**è¾“å…¥å‚æ•° ï¼šSPI_TypeDef* SPIx,å¯é€‰æ‹©SPI1,SPI2  ;  address;*p;number
+**è¾“å‡ºå‚æ•° ï¼šæ— 
 ********************************************************************************************************/
 void SPIM_PageProgram(SPI_TypeDef* SPIx,u32 address,u8 *p,u16 number)
 {
@@ -270,11 +264,11 @@ void SPIM_PageProgram(SPI_TypeDef* SPIx,u32 address,u8 *p,u16 number)
 }
 
 /********************************************************************************************************
-**º¯ÊıĞÅÏ¢ £ºSPIM_SectorErase(SPI_TypeDef* SPIx)             
-**¹¦ÄÜÃèÊö :²Á³ıÊı¾İ
-**ÊäÈë²ÎÊı £ºSPI_TypeDef* SPIx,¿ÉÑ¡ÔñSPI1,SPI2
-**ÊäÈë²ÎÊı £ºunsigned long address,É¾³ıÖ¸¶¨sectorµÄµØÖ· each sector = 64Kbytes
-**Êä³ö²ÎÊı £ºÎŞ
+**å‡½æ•°ä¿¡æ¯ ï¼šSPIM_SectorErase(SPI_TypeDef* SPIx)             
+**åŠŸèƒ½æè¿° :æ“¦é™¤æ•°æ®
+**è¾“å…¥å‚æ•° ï¼šSPI_TypeDef* SPIx,å¯é€‰æ‹©SPI1,SPI2
+**è¾“å…¥å‚æ•° ï¼šunsigned long address,åˆ é™¤æŒ‡å®šsectorçš„åœ°å€ each sector = 64Kbytes
+**è¾“å‡ºå‚æ•° ï¼šæ— 
 ********************************************************************************************************/
 void SPIM_SectorErase(SPI_TypeDef* SPIx,u32 address)
 {
@@ -298,10 +292,10 @@ void SPIM_SectorErase(SPI_TypeDef* SPIx,u32 address)
 }
 
 /********************************************************************************************************
-**º¯ÊıĞÅÏ¢ £ºSPIM_BlockErase(SPI_TypeDef* SPIx)             
-**¹¦ÄÜÃèÊö :²Á³ıÊı¾İ
-**ÊäÈë²ÎÊı £ºSPI_TypeDef* SPIx,¿ÉÑ¡ÔñSPI1,SPI2
-**Êä³ö²ÎÊı £ºÎŞ
+**å‡½æ•°ä¿¡æ¯ ï¼šSPIM_BlockErase(SPI_TypeDef* SPIx)             
+**åŠŸèƒ½æè¿° :æ“¦é™¤æ•°æ®
+**è¾“å…¥å‚æ•° ï¼šSPI_TypeDef* SPIx,å¯é€‰æ‹©SPI1,SPI2
+**è¾“å‡ºå‚æ•° ï¼šæ— 
 ********************************************************************************************************/
 void SPIM_BlockErase(SPI_TypeDef* SPIx)
 {
@@ -316,10 +310,10 @@ void SPIM_BlockErase(SPI_TypeDef* SPIx)
 	SPIM_checkStatus(SPIx);
 }
 /********************************************************************************************************
-**º¯ÊıĞÅÏ¢ £ºSPIM_Close(SPI_TypeDef* SPIx)             
-**¹¦ÄÜÃèÊö : CSĞÅºÅÀ­¸ß£¬Í£Ö¹Í¨ĞÅ
-**ÊäÈë²ÎÊı £ºSPI_TypeDef* SPIx,¿ÉÑ¡ÔñSPI1,SPI2
-**Êä³ö²ÎÊı £ºÎŞ
+**å‡½æ•°ä¿¡æ¯ ï¼šSPIM_Close(SPI_TypeDef* SPIx)             
+**åŠŸèƒ½æè¿° : CSä¿¡å·æ‹‰é«˜ï¼Œåœæ­¢é€šä¿¡
+**è¾“å…¥å‚æ•° ï¼šSPI_TypeDef* SPIx,å¯é€‰æ‹©SPI1,SPI2
+**è¾“å‡ºå‚æ•° ï¼šæ— 
 ********************************************************************************************************/
 void SPIM_Close(SPI_TypeDef* SPIx)
 {
@@ -328,10 +322,10 @@ void SPIM_Close(SPI_TypeDef* SPIx)
 }
 
 /********************************************************************************************************
-**º¯ÊıĞÅÏ¢ £ºSPIM_Test(SPI_TypeDef* SPIx)          
-**¹¦ÄÜÃèÊö :²âÊÔ³ÌĞò£¬Ê¹ÓÃ´®¿Ú´òÓ¡256Ò³Êı¾İ
-**ÊäÈë²ÎÊı £ºSPI_TypeDef* SPIx,¿ÉÑ¡ÔñSPI1,SPI2
-**Êä³ö²ÎÊı £ºÎŞ
+**å‡½æ•°ä¿¡æ¯ ï¼šSPIM_Test(SPI_TypeDef* SPIx)          
+**åŠŸèƒ½æè¿° :æµ‹è¯•ç¨‹åºï¼Œä½¿ç”¨ä¸²å£æ‰“å°256é¡µæ•°æ®
+**è¾“å…¥å‚æ•° ï¼šSPI_TypeDef* SPIx,å¯é€‰æ‹©SPI1,SPI2
+**è¾“å‡ºå‚æ•° ï¼šæ— 
 ********************************************************************************************************/
 //void SPIM_Test(SPI_TypeDef* SPIx)
 //{
@@ -343,7 +337,7 @@ void SPIM_Close(SPI_TypeDef* SPIx)
 //	
 //	printf("spi2 test\r\n");
 //	
-//	SPIM_Init(SPIx,0x2);						//2·ÖÆµ£¬36MHz
+//	SPIM_Init(SPIx,0x2);						//2åˆ†é¢‘ï¼Œ36MHz
 //	
 //	SPIM_ReadID(SPIx, &id[0]);
 //	
@@ -355,7 +349,7 @@ void SPIM_Close(SPI_TypeDef* SPIx)
 //		rxtmpdata[i] = 0x0;
 //	}
 //	
-//	SPIM_PageRead(SPIx,256,rxtmpdata,256); 		//°ÑĞ´½øÈ¥µÄÒ»Ò³256×Ö½Ú¶Á³öÀ´
+//	SPIM_PageRead(SPIx,256,rxtmpdata,256); 		//æŠŠå†™è¿›å»çš„ä¸€é¡µ256å­—èŠ‚è¯»å‡ºæ¥
 //	
 //	for(i = 0; i < 10; i++){
 //		printf("rx[%d]=0x%x\r\n",i,rxtmpdata[i]);

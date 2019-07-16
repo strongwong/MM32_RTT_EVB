@@ -29,8 +29,8 @@
   * @{
   */
     
-#ifndef __MM32x103_H
-#define __MM32x103_H
+#ifndef __MM32x103_H_
+#define __MM32x103_H_
   
 /** @addtogroup Library_configuration_section
   * @{

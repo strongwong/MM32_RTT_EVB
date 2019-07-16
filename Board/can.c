@@ -4,9 +4,8 @@
 
 #include <string.h>
 #include "HAL_device.h"
-#include "main.h" 
-#include "can.h" 
-#include "lcd_demo.h" 
+
+#include "EVBoard.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////

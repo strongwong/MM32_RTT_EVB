@@ -6,18 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "HAL_device.h"
-#include "main.h" 
-#include "led_key.h" 
-#include "adc.h" 
-#include "lcd.h" 
-#include "lcd_demo.h" 
-#include "spiflash.h" 
-#include "can.h" 
-#include "uart.h" 
-#include "i2c.h" 
-#include "ir_rx.h" 
-#include "datetime.h"
+#include "EVBoard.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 void dispADC(u8 sta)

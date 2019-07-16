@@ -10,6 +10,7 @@
  * Change Logs:
  * Date           Author       Notes
  * 2017-07-24     Tanek        the first version
+ * 2019-07-16     strongwong   porting MM32
  */
 #include <rthw.h>
 #include <rtthread.h>

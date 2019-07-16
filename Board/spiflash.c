@@ -6,10 +6,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "HAL_device.h"
-#include "main.h" 
-#include "spi.h" 
-#include "spiflash.h" 
+#include "EVBoard.h"
+
 
 ////////////////////////////////////////////////////////////////////////////////
 void InitSPIFLASH(void)
@@ -17,12 +15,12 @@ void InitSPIFLASH(void)
 	SPI_InitTypeDef SPI_InitStructure;
 	
 	SPI_InitStructure.SPI_Mode = SPI_Mode_Master;
-	SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;				// DMAÊı¾İ¿í¶È
+	SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b;				// DMAæ•°æ®å®½åº¦
 	SPI_InitStructure.SPI_DataWidth = SPI_DataWidth_8b;
 	SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;    					// mode0 SPI_CPOL_Low, SPI_CPHA_1Edge;
 	SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;  					// mode3 SPI_CPOL_High,SPI_CPHA_2Edge
 	SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
-	SPI_InitStructure.SPI_BaudRatePrescaler = 2;				//spi_baud_div;			// SPI×î¸ß40MHz£¬72M×î¶à2·ÖÆµ
+	SPI_InitStructure.SPI_BaudRatePrescaler = 2;				//spi_baud_div;			// SPIæœ€é«˜40MHzï¼Œ72Mæœ€å¤š2åˆ†é¢‘
 	SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;
 	
 #ifdef MM32F103xA	
@@ -30,7 +28,7 @@ void InitSPIFLASH(void)
 #endif	
 	SPI_Init(SPI1, &SPI_InitStructure);
 	
-	SPI_Cmd(SPI1, ENABLE); 											// Enables the specified SPI peripheral SPIÊ¹ÄÜ¡¢Ö÷»úÄ£Ê½ 8Î»Êı¾İÄ£Ê½ SPI µÄ²¨ÌØÂÊ
+	SPI_Cmd(SPI1, ENABLE); 											// Enables the specified SPI peripheral SPIä½¿èƒ½ã€ä¸»æœºæ¨¡å¼ 8ä½æ•°æ®æ¨¡å¼ SPI çš„æ³¢ç‰¹ç‡
 	SPIM_TXEn(SPI1);
 	SPIM_RXEn(SPI1);	
 }
@@ -55,22 +53,22 @@ void initGPIO_SPI(SPI_TypeDef* SPIx)
 		
 		GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_4;   		//spi1_cs  pa4
 		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 	//ÍÆÍìÊä³ö
+		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 	//æ¨æŒ½è¾“å‡º
 		GPIO_Init(GPIOA, &GPIO_InitStructure);
 		
 		GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_5;   		//spi1_sck  pa5
 		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP; 	// ÍÆÃâ¸´ÓÃÊä³ö
+		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP; 	// æ¨å…å¤ç”¨è¾“å‡º
 		GPIO_Init(GPIOA, &GPIO_InitStructure);
 		
 		GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_7;   		//spi1_mosi  pa7
 		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP; 	// ÍÆÃâ¸´ÓÃÊä³ö
+		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP; 	// æ¨å…å¤ç”¨è¾“å‡º
 		GPIO_Init(GPIOA, &GPIO_InitStructure);
 		
 		GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_6;  		//spi1_miso  pa6
 		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; 		//ÉÏÀ­ÊäÈë   
+		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; 		//ä¸Šæ‹‰è¾“å…¥   
 		GPIO_Init(GPIOA, &GPIO_InitStructure);
 		
 	}
@@ -80,22 +78,22 @@ void initGPIO_SPI(SPI_TypeDef* SPIx)
 		RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI2, ENABLE);//SPI2 clk enable
 		GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_12;   		//spi2_cs  pb12
 		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 	// ÍÆÃâ¸´ÓÃÊä³ö
+		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 	// æ¨å…å¤ç”¨è¾“å‡º
 		GPIO_Init(GPIOB, &GPIO_InitStructure);
 		
 		GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_13;   		//spi2_sck  pb13
 		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP; 	// ÍÆÃâ¸´ÓÃÊä³ö
+		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP; 	// æ¨å…å¤ç”¨è¾“å‡º
 		GPIO_Init(GPIOB, &GPIO_InitStructure);
 		
 		GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_15;   		//spi2_mosi  pb15
 		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP; 	// ÍÆÃâ¸´ÓÃÊä³ö
+		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP; 	// æ¨å…å¤ç”¨è¾“å‡º
 		GPIO_Init(GPIOB, &GPIO_InitStructure);
 		
 		GPIO_InitStructure.GPIO_Pin  = GPIO_Pin_14;  		//spi2_miso  pb14
 		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; 		//ÉÏÀ­ÊäÈë   
+		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; 		//ä¸Šæ‹‰è¾“å…¥   
 		GPIO_Init(GPIOB, &GPIO_InitStructure);
 		
 	}

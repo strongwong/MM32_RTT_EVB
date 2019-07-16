@@ -2,12 +2,10 @@
 #define _DATETIME_C_
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "string.h"
-#include "HAL_device.h"
-#include "main.h"
-#include "datetime.h"
-#include "rtc.h"
-#include "led_key.h"
+#include <string.h>
+
+#include "EVBoard.h"
+
 
 ////////////////////////////////////////////////////////////////////////////////
 u32 DateTimeToSeconds(dateTimeDef *tp)
