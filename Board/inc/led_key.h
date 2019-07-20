@@ -37,8 +37,8 @@ void initGPIO_LED();
 void initGPIO_KEY();
 
 void ProcessLED();
-void LED_0_ON();
-void LED_0_OFF();
+void LED_2_ON();
+void LED_2_OFF();
 void LED_1_ON();
 void LED_1_OFF();
 

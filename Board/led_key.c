@@ -17,7 +17,7 @@ void initGPIO_LED()
 	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE);
 	
 	// LD2
-	LED_0_OFF();
+	LED_2_OFF();
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;
 	GPIO_InitStructure.GPIO_Mode =  GPIO_Mode_Out_OD;
@@ -51,8 +51,8 @@ void initGPIO_KEY()
 }
 
 //////////////////////////////////////////////////////////////////////////////////
-void LED_0_ON()			{ GPIO_ResetBits(GPIOA, GPIO_Pin_8);}
-void LED_0_OFF()		{ GPIO_SetBits  (GPIOA, GPIO_Pin_8);}
+void LED_2_ON()			{ GPIO_ResetBits(GPIOA, GPIO_Pin_8);}
+void LED_2_OFF()		{ GPIO_SetBits  (GPIOA, GPIO_Pin_8);}
 void LED_1_ON()			{ GPIO_ResetBits(GPIOC, GPIO_Pin_13);}
 void LED_1_OFF()		{ GPIO_SetBits  (GPIOC, GPIO_Pin_13);}
 
@@ -61,8 +61,8 @@ void LED_1_OFF()		{ GPIO_SetBits  (GPIOC, GPIO_Pin_13);}
 void ProcessLED()
 {
 	switch (ledCnt++) {
-		case 0:		LED_0_ON(); 	break;
-		case 1:		LED_0_OFF(); 	break;; 
+		case 0:		LED_2_ON(); 	break;
+		case 1:		LED_2_OFF(); 	break;; 
 		case 2:		LED_1_ON(); 	break;
 		default:	LED_1_OFF();	
 					ledCnt = 0;		break;

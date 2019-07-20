@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <userOverrides>
     <override>
+        <path>E:\GitWork\MM32_RTT_EVB\App\study_thread.c</path>
+        <encoding>UTF-8</encoding>
+    </override>
+    <override>
         <path>E:\GitWork\MM32_RTT_EVB\Board\delay.c</path>
         <encoding>UTF-8</encoding>
     </override>
@@ -22,6 +26,10 @@
     </override>
     <override>
         <path>E:\GitWork\MM32_RTT_EVB\Board\sys.c</path>
+        <encoding>UTF-8</encoding>
+    </override>
+    <override>
+        <path>E:\GitWork\MM32_RTT_EVB\Chip\HAL_lib\HAL_i2c.c</path>
         <encoding>UTF-8</encoding>
     </override>
     <override>

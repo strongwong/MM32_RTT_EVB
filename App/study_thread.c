@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
-#define _STUDY_THREAD_
+#define _STUDY_THREAD_C_
 ////////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
@@ -10,29 +10,78 @@
 #include <rtthread.h>
 #include "study_thread.h"
 
-/* Ïß³Ì1Èë¿Ú */
+
+
+/* å­¦ä¹ å‡½æ•°å…¥å£ */
 void study_entry(void* parameter)
 {
 	while (1)
     {
-        LED_0_OFF();    //LD2Êä³öÃğ
-        LED_1_ON();     //LD1Êä³öÁÁ
-        rt_thread_delay(RT_TICK_PER_SECOND / 1);
-	}   /* ËÀÑ­»· */
+		LED_1_ON();     //LD1è¾“å‡ºäº®		
+		
+        rt_thread_delay(RT_TICK_PER_SECOND / 10);
+	}   
 }
 
-/* Ïß³Ì2Èë¿Ú */
-void thread2_entry(void* parameter)
+
+///* å­¦ä¹ å‡½æ•°å…¥å£ */
+//void study_entry(void* parameter)
+//{
+//	while (1)
+//    {
+//		if(tog){
+//			LED_2_OFF();    //LD2è¾“å‡ºç­
+//			LED_1_ON();     //LD1è¾“å‡ºäº®
+//			tog = FALSE;
+//		}
+//		else
+//		{
+//			LED_2_ON();     //LD2è¾“å‡ºäº®
+//			LED_1_OFF();    //LD1è¾“å‡ºç­
+//			tog = TRUE;
+//		}		
+//		
+//        rt_thread_delay(RT_TICK_PER_SECOND / 10);
+//	}   
+//}
+
+
+
+///* å­¦ä¹ å‡½æ•°å…¥å£ */
+//void study_entry(void* parameter)
+//{
+//	while (1)
+//    {
+//		if(tog){
+//			LED_2_OFF();    //LD2è¾“å‡ºç­
+//			LED_1_ON();     //LD1è¾“å‡ºäº®
+//		}
+//		else
+//		{
+//			LED_2_ON();     //LD2è¾“å‡ºäº®
+//			LED_1_OFF();    //LD1è¾“å‡ºç­
+//		}		
+//		
+////        rt_thread_delay(RT_TICK_PER_SECOND / 1);
+//	}   
+//}
+
+/* æŒ‰é”®å¤„ç†å‡½æ•°å…¥å£ */
+void keys_entry(void* parameter)
 {
     while (1)
     {
-        LED_0_ON();     //LD2Êä³öÁÁ
-        LED_1_OFF();    //LD1Êä³öÃğ
+//		if(Key1){
+//			tog = TRUE;
+//		}
+//		else{
+//			tog = FALSE;
+//		}
+		
         rt_thread_delay(RT_TICK_PER_SECOND / 10);
-        // ĞİÃß1Ãë 
-        // rt_thread_delay(RT_TICK_PER_SECOND);
     }
 }
+
 
 
 

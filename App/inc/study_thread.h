@@ -7,6 +7,18 @@
 #define THREAD_PRIORITY	5
 
 
+
+/* 线程1控制块及线程栈 */
+static struct rt_thread study;
+ALIGN(4)
+static rt_uint8_t study_stack[THREAD_STACK_SIZE];
+
+/* 线程2控制块及线程栈 */
+static struct rt_thread keys;
+ALIGN(4)
+static rt_uint8_t keys_stack[THREAD_STACK_SIZE];
+
+
 ////////////////////////////////////////////////////////////////////////////////
 #ifdef 	_STUDY_THREAD_C_
 #define GLOBAL
@@ -15,22 +27,14 @@
 #define GLOBAL extern
 #endif
 
-/* 线程1控制块及线程栈 */
-static struct rt_thread study;
-ALIGN(4)
-static rt_uint8_t study_stack[THREAD_STACK_SIZE];
-
-/* 线程2控制块及线程栈 */
-static struct rt_thread thread2;
-ALIGN(4)
-static rt_uint8_t thread2_stack[THREAD_STACK_SIZE];
+GLOBAL u8 tog;
 
 
 #undef GLOBAL
 ////////////////////////////////////////////////////////////////////////////////
 
 void study_entry(void* parameter);
-void thread2_entry(void* parameter);
+void keys_entry(void* parameter);
 
 
 

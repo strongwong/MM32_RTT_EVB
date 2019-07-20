@@ -68,7 +68,7 @@
 #define IC_TAR_ENDUAL_Set         ((uint16_t)0x1000)
 #define IC_TAR_ENDUAL_Reset       ((uint16_t)0xEFFF)
 
-/* I2C SPECIAL¡¢GC_OR_START bits mask */
+/* I2C SPECIALã€GC_OR_START bits mask */
 #define IC_TAR_GC_Set            ((uint16_t)0x0800)
 #define IC_TAR_GC_Reset          ((uint16_t)0xF7FF)
 
@@ -78,7 +78,7 @@
 
 static uint8_t I2C_CMD_DIR = 0;
 
-/*ĞÂÔö¼ÓµÄÓÃ»§±äÁ¿£¬Íâ²¿µ÷ÓÃÊ±ĞèÒª¸üĞÂ¸Ã±äÁ¿Öµ*/
+/*æ–°å¢åŠ çš„ç”¨æˆ·å˜é‡ï¼Œå¤–éƒ¨è°ƒç”¨æ—¶éœ€è¦æ›´æ–°è¯¥å˜é‡å€¼*/
 uint16_t I2C_DMA_DIR = 0;  
 
 /** 

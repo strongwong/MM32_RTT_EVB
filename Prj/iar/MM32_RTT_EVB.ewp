@@ -218,6 +218,7 @@
                     <state>USE_STDPERIPH_DRIVER</state>
                     <state>USE_IAR</state>
                     <state>MM32X103</state>
+                    <state>MM32_EVB</state>
                 </option>
                 <option>
                     <name>CCPreprocFile</name>
