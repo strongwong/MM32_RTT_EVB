@@ -2374,6 +2374,9 @@
         <file>
             <name>$PROJ_DIR$\..\..\App\main.c</name>
         </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\App\study_thread.c</name>
+        </file>
     </group>
     <group>
         <name>Board</name>

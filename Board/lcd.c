@@ -444,7 +444,7 @@ void drawRec (u16 x, u16 y, u16 w, u16 h, u16 c)
 	lcdSetWindow (x, y, w, h);
 	lcdCmd(0x2c);
 	
-	for (u16 i = 0; i < (w * h); i++){
+	for (u32 i = 0; i < (w * h); i++){		// set i is u32, because w*h will exceed u16
         lcdData16(c);
 	}
 }

@@ -312,7 +312,7 @@ void randRefresh(u16* flag)
 
 void clearLeftScreen()
 {
-	drawRec (dx , dy , dw + 30, dh + 95, DarkCyan);
+	drawRec (dx , dy , dw + 45, dh + 95, DarkCyan);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -602,3 +602,19 @@ void initLCD()
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+
+void BootShow()
+{
+	char str[35];
+	text.fore =  Yellow;
+	text.back = DarkCyan;
+	strcpy(str, "RT-Thread is Running MM32 EVBoard£¡");
+	putStr(30, 110, 2, 1, str);
+//	drawRec (60, 128, 202, 0, Blue);
+	
+	text.fore = White;
+	text.back = DarkCyan;
+	
+	for(u32 i = 0; i < 1000000; i++ );
+	clearLeftScreen();
+}

@@ -9,58 +9,97 @@
 #include "EVBoard.h"
 
 #include <rtthread.h>
+#include "study_thread.h"
 
-#define THREAD_STACK_SIZE	1024
-#define THREAD_PRIORITY	5
-
-/* 线程1控制块及线程栈 */
-static struct rt_thread thread1;
-ALIGN(4)
-static rt_uint8_t thread1_stack[THREAD_STACK_SIZE];
-
-/* 线程2控制块及线程栈 */
-static struct rt_thread thread2;
-ALIGN(4)
-static rt_uint8_t thread2_stack[THREAD_STACK_SIZE];
-
-/* 线程1入口 */
-static void thread1_entry(void* parameter)
+////////////////////////////////////////////////////////////////////////////////
+void initPeripheral()
 {
-	while (1)
-    {
-        LED_0_OFF();    //LD2输出灭
-        LED_1_ON();     //LD1输出亮
-        rt_thread_delay(RT_TICK_PER_SECOND / 1);
-	}   /* 死循环 */
+	InitSPIFLASH();
+	initLCD();
+	initADC();
+	initCAN();
+	initUART();
+	initI2C();
+	initIR_Rx();
 }
 
-/* 线程2入口 */
-static void thread2_entry(void* parameter)
+////////////////////////////////////////////////////////////////////////////////
+void initNVIC()
 {
-    while (1)
-    {
-        LED_0_ON();     //LD2输出亮
-        LED_1_OFF();    //LD1输出灭
-        rt_thread_delay(RT_TICK_PER_SECOND / 10);
-        // 休眠1秒 
-        // rt_thread_delay(RT_TICK_PER_SECOND);
-    }
+	NVIC_RTC();
+	NVIC_I2C(I2C2);
+	NVIC_CAN();
+	NVIC_UART();
 }
 
+////////////////////////////////////////////////////////////////////////////////
+void initGPIO()
+{
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA |
+						   RCC_APB2Periph_GPIOB |
+						   RCC_APB2Periph_GPIOC |
+						   RCC_APB2Periph_GPIOD |
+						   RCC_APB2Periph_AFIO,
+						   ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI2,ENABLE);
+
+	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE);
+	
+	initGPIO_UART();
+	initGPIO_SPI(SPI1);
+	initGPIO_LED();
+	initGPIO_KEY();
+	initGPIO_ADC();
+	initGPIO_CAN();
+	initGPIO_I2C(I2C2);
+	initGPIO_LCD();
+	initGPIO_IR();
+}
+
+////////////////////////////////////////////////////////////////////////////////
+void initRCC(void)
+{
+	ErrorStatus HSEStartUpStatus;
+
+	RCC_DeInit(); 							 						// RCC system reset(for debug purpose)
+	RCC_HSEConfig(RCC_HSE_ON);  									// Enable HSE //
+	HSEStartUpStatus = RCC_WaitForHSEStartUp(); 					// Wait till HSE is ready
+	for(u32 i = 0; i < 100000; i++); 
+  
+	if(HSEStartUpStatus == SUCCESS)	{
+		FLASH_PrefetchBufferCmd(FLASH_PrefetchBuffer_Enable);    	// Enable Prefetch Buffer
+		FLASH_SetLatency(FLASH_Latency_2);    						// Flash 2 wait state
+		RCC_HCLKConfig(RCC_SYSCLK_Div1);    						// HCLK = SYSCLK
+		RCC_PCLK2Config(RCC_HCLK_Div1);    							// PCLK2 = HCLK
+		RCC_PCLK1Config(RCC_HCLK_Div1);    							// PCLK1 = HCLK
+		RCC_ADCCLKConfig(RCC_PCLK2_Div6);					    	// ADCCLK = PCLK2/6
+		RCC_PLLConfig(RCC_PLLSource_HSE_Div1, RCC_PLLMul_9);		// PLLCLK = 8MHz * 9 = 72 MHz
+		RCC_PLLCmd(ENABLE);					    					// Enable PLL
+		while(RCC_GetFlagStatus(RCC_FLAG_PLLRDY) == RESET){}		// Wait till PLL is ready
+		RCC_SYSCLKConfig(RCC_SYSCLKSource_PLLCLK);					// Select PLL as system clock source
+		while(RCC_GetSYSCLKSource() != 0x08){}				    	// Wait till PLL is used as system clock source
+	}
+	NVIC_SetVectorTable(NVIC_VectTab_FLASH, 0x0);					// Set the Vector Table base address at 0x08000000
+}
 
 int main(void)
 {	
 	rt_err_t result;
+	
+	initRCC();
+	initGPIO();
 	//delay_init();	    	    //延时函数初始化	  
     initGPIO_LED();		  	    //初始化与LED连接的硬件接口
+	initLCD();					//初始化 LCD 的硬件接口
+	BootShow();
 	
-    // 初始化线程1 
-    result = rt_thread_init(&thread1, "t1",         /* 线程名：t1 */
-        thread1_entry, RT_NULL,                     /* 线程的入口是thread_entry */
-        &thread1_stack[0], sizeof(thread1_stack),   /* 线程栈是thread1_stack */
+    // 初始化 study 
+    result = rt_thread_init(&study, "study",        /* 线程名：study */
+        study_entry, RT_NULL,                     	/* 线程的入口是 study_entry */
+        &study_stack[0], sizeof(study_stack),   	/* 线程栈是study_stack */
         THREAD_PRIORITY, 10);
     if (result == RT_EOK)                           /* 如果返回正确，启动线程1 */
-        rt_thread_startup(&thread1);
+        rt_thread_startup(&study);
 
     // 初始化线程2
     result = rt_thread_init(&thread2, "t2",         /* 线程名：t2 */
