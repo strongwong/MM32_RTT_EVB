@@ -13,21 +13,21 @@ void initGPIO_LED()
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOC, ENABLE);
-	
-	GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE);
-	
+		
 	// LD2
 	LED_2_OFF();
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;
-	GPIO_InitStructure.GPIO_Mode =  GPIO_Mode_Out_OD;
+	GPIO_InitStructure.GPIO_Mode =  GPIO_Mode_Out_PP;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
+	
+	
 	// LD1
 	LED_1_OFF();
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_13;
-	GPIO_InitStructure.GPIO_Mode =  GPIO_Mode_Out_PP;//GPIO_Mode_Out_OD;
+	GPIO_InitStructure.GPIO_Mode =  GPIO_Mode_Out_PP;//GPIO_Mode_Out_OD;改成推挽输出
 	GPIO_Init(GPIOC, &GPIO_InitStructure);
-
+	
 }
 
 ////////////////////////////////////////////////////////////////////////////////

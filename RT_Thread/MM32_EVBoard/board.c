@@ -251,7 +251,5 @@ void mm32_evb_hardware_init(){
 	initGPIO();
 	initNVIC();
 //	processOver();
-//	initPeripheral();
-//	BootShow();
 	
 }
