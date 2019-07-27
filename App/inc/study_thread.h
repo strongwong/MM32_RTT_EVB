@@ -3,20 +3,26 @@
 #define __STUDY_THREAD_H_
 ////////////////////////////////////////////////////////////////////////////////
 
-#define THREAD_STACK_SIZE	1024
+#define THREAD_STACK_SIZE	512
 #define THREAD_PRIORITY	5
 
 
 
-/* 线程1控制块及线程栈 */
+/* study 线程控制块及线程栈 */
 static struct rt_thread study;
 ALIGN(4)
 static rt_uint8_t study_stack[THREAD_STACK_SIZE];
 
-/* 线程2控制块及线程栈 */
+/* keys 线程控制块及线程栈 */
 static struct rt_thread keys;
 ALIGN(4)
 static rt_uint8_t keys_stack[THREAD_STACK_SIZE];
+
+/* timers 线程控制块及线程栈 */
+static struct rt_thread timers;
+ALIGN(4)
+static rt_uint8_t timers_stack[THREAD_STACK_SIZE];
+
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -35,7 +41,7 @@ GLOBAL u8 tog;
 
 void study_entry(void* parameter);
 void keys_entry(void* parameter);
-
+void timers_entry(void* parameter);
 
 
 

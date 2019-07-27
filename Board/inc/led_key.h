@@ -5,6 +5,9 @@
 
 #define offsetH		50
 
+#define LED1	PCout(13)
+#define LED2	PAout(8)
+
 #define Key1	GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0)
 #define Key2  	GPIO_ReadInputDataBit(GPIOC,GPIO_Pin_10)
 #define Key3  	GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_15)

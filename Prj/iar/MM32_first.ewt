@@ -2496,7 +2496,7 @@
         </file>
     </group>
     <group>
-        <name>RT_Thread</name>
+        <name>RT_thread</name>
         <file>
             <name>$PROJ_DIR$\..\..\RT_Thread\2.1.1\src\clock.c</name>
         </file>
